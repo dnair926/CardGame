@@ -1,0 +1,13 @@
+.player-container {
+    display:block;
+    margin-bottom:70px;
+    position:relative;
+}
+    .player-container img {
+        width:50px;
+        float:left;
+        position:absolute;
+    }
+.card-selected{
+    top:-.2em;
+}

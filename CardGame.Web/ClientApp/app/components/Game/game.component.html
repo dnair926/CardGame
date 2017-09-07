@@ -1,0 +1,26 @@
+<select [(ngModel)]="playerCount" (change)="playerCountChanged()">
+    <option [ngValue]="0">0</option>
+    <option [ngValue]="1">1</option>
+    <option [ngValue]="2">2</option>
+    <option [ngValue]="3">3</option>
+    <option [ngValue]="4">4</option>
+    <option [ngValue]="5">5</option>
+    <option [ngValue]="6">6</option>
+</select>
+
+
+<ng-container *ngFor="let player of game?.players">
+    <div class="player-container">
+        <div class="player-info">{{player.userInfo.name}}<span class="badge">{{player?.cards?.length}}</span>
+            <button *ngIf="player.currentPlayer && selectedCard" (click)="playCard(player)" class="btn btn-xs btn-success">Play Card</button>
+        </div>
+        <ng-container *ngFor="let card of player.cards">
+            <img src="{{'./dist/images/' + card.cardImageName}}" 
+                 [style.left.em]="findCardIndex(player, card)" 
+                 [alt]="card.cardImageName" 
+                 (click)="player.currentPlayer && cardClicked(player, card)" 
+                 class="player-card"
+                 [class.card-selected]="card.selected"/>
+        </ng-container>
+    </div>
+</ng-container>
